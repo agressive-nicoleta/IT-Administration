@@ -1,0 +1,19 @@
+- name: Add linux user Juri
+  ansible.builtin.user:
+    name: juri
+
+- name: Set authorized key from url for Juri
+  ansible.posix.authorized_key:
+    user: juri
+    state: present
+    key: https://github.com/hudolejev.keys
+
+- name: Add linux user Roman
+  ansible.builtin.user: 
+    name: roman
+
+- name: Set authorized key from url for Roman
+  ansible.posix.authorized_key:
+    user: roman
+    state: present
+    key: https://github.com/romankuchin.keys

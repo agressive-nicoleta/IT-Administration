@@ -1,1 +1,4 @@
-my_beloved_server ansible_host=193.40.156.67 ansible_port=3122 ansible_ssh_user=ubuntu
+aggressive-nicoleta-1 ansible_host=193.40.156.67 ansible_port=14522 ansible_ssh_user=ubuntu
+
+[web_servers]
+aggressive-nicoleta-1
