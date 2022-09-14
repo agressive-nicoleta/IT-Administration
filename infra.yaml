@@ -3,5 +3,5 @@
   hosts: web_servers
   become: yes
   roles:
-    - users
+    - agama
     - nginx
