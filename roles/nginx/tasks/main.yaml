@@ -4,7 +4,15 @@
     state: latest
     update-cache: yes
 
-- name: Change index page
-  ansible.builtin.copy:
-    src: index.html
-    dest: /var/www/html/index.nginx-debian.html
+- name: Overwrite default config file
+  copy: 
+    src: default
+    dest: /etc/nginx/sites-enabled/default
+    mode: 0644
+  notify: Restart Nginx
+
+- name: Nginx service
+  service:
+    name: nginx
+    state: started
+    enabled: yes
