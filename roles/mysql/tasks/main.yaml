@@ -2,8 +2,16 @@
   ansible.builtin.apt:
     name: mysql-server
 
+- name: Restart service is needed
+  copy: 
+    src: override
+    dest: /etc/mysql/mysql.conf.d/override.cnf
+    mode: 0644
+  notify: Restart MySQL
+
 - name: MySQL service
   service:
     name: mysql
     state: started
     enabled: yes
+
