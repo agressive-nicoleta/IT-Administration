@@ -1,6 +1,8 @@
 - name: Install MySQL
   ansible.builtin.apt:
-    name: mysql-server
+    name: 
+      - mysql-server
+      - python3-pymysql
 
 - name: Restart service is needed
   copy: 
@@ -15,3 +17,16 @@
     state: started
     enabled: yes
 
+- name: Create MySQL database
+  community.mysql.mysql_db:
+    name: "{{ mysql_database }}"
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: MySQL users
+  community.mysql.mysql_user:
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
+    host: "%"
+    priv: "{{ mysql_database }}.*:ALL"
+    login_unix_socket: /var/run/mysqld/mysqld.sock

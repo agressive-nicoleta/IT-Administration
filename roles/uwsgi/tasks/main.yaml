@@ -5,7 +5,7 @@
     - uwsgi-plugin-python3
 
 - name: Add configuration file for agama
-  copy:
+  template:
     src: agama.ini
     dest: /etc/uwsgi/apps-enabled/agama.ini
   notify: Restart uWSGI
