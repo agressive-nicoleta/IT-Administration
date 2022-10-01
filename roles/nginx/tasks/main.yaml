@@ -2,7 +2,6 @@
   ansible.builtin.apt:
     name: nginx
     state: latest
-    update-cache: yes
 
 - name: Overwrite default config file
   copy: 
