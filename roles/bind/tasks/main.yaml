@@ -7,6 +7,11 @@
     name: bind9
     state: started
 
+- name: Overwrite resolv.conf
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
+
 - name: Overwrite named.conf.options file
   template:
     src: named.conf.options.j2
@@ -19,8 +24,8 @@
     dest: /etc/bind/named.conf.local
   notify: Restart bind9
 
-- name: Create db.ecoline.mars
+- name: Create db of the startup
   template:
-    src: db.ecoline.mars.j2
-    dest: /var/lib/bind/db.ecoline.mars
+    src: db.nicole.ptr.j2
+    dest: /var/lib/bind/db.nicole.ptr
   notify: Reload db

@@ -1,12 +1,12 @@
 $TTL	604800
-ecoline.mars.	IN	SOA	aggressive-nicoleta-2.ecoline.mars. ecoline.ecoline.mars. (
+{{ startup }}.	IN	SOA	aggressive-nicoleta-2.{{ startup }}. nicole.{{ startup }}. (
 			      2		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ;
-ecoline.mars.	IN	NS	aggressive-nicoleta-1
+{{ startup }}.	IN	NS	aggressive-nicoleta-1
 {% for vm in groups['all'] %}
 {{ vm }}	IN	A	{{ hostvars[vm]['ansible_default_ipv4']['address'] }}
 {% endfor %}

@@ -5,7 +5,7 @@
   roles:
     - init
 
-- name: Database server
+- name: Database and DNS server
   hosts: db_servers
   become: yes
   gather_facts: no
