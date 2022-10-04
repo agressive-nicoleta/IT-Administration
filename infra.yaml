@@ -4,6 +4,7 @@
   become: yes
   roles:
     - init
+    - systemd
 
 - name: Database and DNS server
   hosts: db_servers

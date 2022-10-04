@@ -1,4 +1,0 @@
-{% for db in groups['db_servers']%}
-nameserver {{ hostvars[db]['ansible_default_ipv4']['address'] }}
-{% endfor %}
-search {{ startup }}

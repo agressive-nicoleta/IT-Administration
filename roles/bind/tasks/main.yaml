@@ -7,11 +7,6 @@
     name: bind9
     state: started
 
-- name: Overwrite resolv.conf
-  template:
-    src: resolv.conf.j2
-    dest: /etc/resolv.conf
-
 - name: Overwrite named.conf.options file
   template:
     src: named.conf.options.j2

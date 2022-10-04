@@ -1,5 +1,5 @@
-aggressive-nicoleta-1 ansible_port=4322
-aggressive-nicoleta-2 ansible_port=32322
+agressive-nicoleta-1 ansible_port=4322
+agressive-nicoleta-2 ansible_port=32322
 
 [all:vars]
 ansible_host=193.40.156.67
@@ -7,7 +7,7 @@ anisble_python_interpreter=python3
 ansible_ssh_user=ubuntu
 
 [web_servers]
-aggressive-nicoleta-1
+agressive-nicoleta-1
 
 [db_servers]
-aggressive-nicoleta-2
+agressive-nicoleta-2
