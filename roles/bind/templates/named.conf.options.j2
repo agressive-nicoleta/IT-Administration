@@ -1,0 +1,15 @@
+acl lan { {% for address in acl_address %} {{address}}; {% endfor %} };
+
+options {
+	directory "/var/lib/bind";
+
+	forwarders {
+	{% for dns in dns_forwarders %}
+        {{dns}};
+    {% endfor %}
+	};
+
+	dnssec-validation no;
+    allow-query { lan; };
+	listen-on-v6 { any; };
+};

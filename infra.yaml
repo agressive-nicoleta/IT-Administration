@@ -8,8 +8,10 @@
 - name: Database server
   hosts: db_servers
   become: yes
+  gather_facts: no
   roles:
     - mysql
+    - bind
 
 - name: Web server
   hosts: web_servers
@@ -18,5 +20,3 @@
     - agama
     - uwsgi
     - nginx
-
-
