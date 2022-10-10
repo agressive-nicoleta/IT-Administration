@@ -9,8 +9,6 @@ mysql_password: !vault |
           3131376665333533300a316535396439366232626237366165623761336131376132366561386232
           3834
 
-public_port_vm2: 32680
-
 startup: nicole.ptr
 
 dns_forwarders:

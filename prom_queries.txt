@@ -1,0 +1,5 @@
+# Average Memory Usage for instances over the past 24 hours
+100 * (1 - ((avg_over_time(node_memory_MemFree_bytes[24h]) + avg_over_time(node_memory_Cached_bytes[10m]) + avg_over_time(node_memory_Buffers_bytes[10m])) / avg_over_time(node_memory_MemTotal_bytes[10m])))
+
+# CPU Usage for the last 1h
+(1 - avg(irate(node_cpu_seconds_total{mode="idle"}[1h])) by (instance)) * 100

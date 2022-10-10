@@ -14,8 +14,9 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: node
+  - job_name: linux
     static_configs:
       - targets: 
-        - agressive-nicoleta-1:9100
-        - agressive-nicoleta-2:9100
+    {% for vm in groups['all']%}
+        - {{vm}}:9100
+    {% endfor %}
