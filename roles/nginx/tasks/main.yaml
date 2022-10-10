@@ -4,8 +4,8 @@
     state: latest
 
 - name: Overwrite default config file
-  copy: 
-    src: default
+  template: 
+    src: default.j2
     dest: /etc/nginx/sites-enabled/default
     mode: 0644
   notify: Restart Nginx

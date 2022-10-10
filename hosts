@@ -8,6 +8,10 @@ ansible_ssh_user=ubuntu
 
 [web_servers]
 agressive-nicoleta-1
+agressive-nicoleta-2
 
 [db_servers]
+agressive-nicoleta-2
+
+[prometheus]
 agressive-nicoleta-2

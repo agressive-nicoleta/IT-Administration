@@ -1,0 +1,20 @@
+- name: Install prometheus
+  apt:
+    name: prometheus
+
+- name: Check service prometheus
+  service:
+    name: prometheus
+    state: started
+
+- name: Change prometheus configuration
+  template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+  notify: Restart prometheus
+
+- name: Add args to default file
+  template:
+    src: default.j2
+    dest: /etc/default/prometheus
+  notify: Restart prometheus

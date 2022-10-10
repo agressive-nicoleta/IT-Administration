@@ -1,0 +1,8 @@
+- name: Install prometheus-node-exporter
+  apt:
+    name: prometheus-node-exporter
+
+- name: Check service node-exporter
+  service:
+    name: prometheus-node-exporter
+    state: started

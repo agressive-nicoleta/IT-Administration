@@ -6,7 +6,7 @@
 
 - name: Add configuration file for agama
   template:
-    src: agama.ini
+    src: agama.ini.j2
     dest: /etc/uwsgi/apps-enabled/agama.ini
   notify: Restart uWSGI
 

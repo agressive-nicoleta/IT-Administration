@@ -26,3 +26,17 @@
     - agama
     - uwsgi
     - nginx
+  tags: n
+
+- name: Install node_exporter
+  hosts: all
+  become: yes
+  roles:
+    - node_exporter
+
+- name: Prometheus
+  hosts: prometheus
+  become: yes
+  roles:
+    - prometheus
+  tags: p
