@@ -6,13 +6,15 @@
   roles:
     - init
     - node_exporter
+  tags: i
 
-- name: Database and DNS server
-  hosts: db_servers
+- name: DNS servers
+  hosts: dns_servers
   become: yes
   roles:
-    - mysql
     - bind
+    - bind_exporter
+  tags: b
 
 - name: Resolv.conf file
   hosts: all
@@ -20,14 +22,29 @@
   roles:
     - resolver
 
+- name: Database and DNS server
+  hosts: db_servers
+  become: yes
+  roles:
+    - mysql
+    - mysql_exporter
+  tags: m
+
+- name: Nginx
+  hosts: all
+  become: yes
+  roles:
+    - nginx
+    - nginx_exporter
+  tags: ng
+
 - name: Web server
   hosts: web_servers
   become: yes
   roles:
     - agama
     - uwsgi
-    - nginx
-  tags: n
+  tags: w
 
 - name: Prometheus
   hosts: prometheus

@@ -9,6 +9,15 @@ mysql_password: !vault |
           3131376665333533300a316535396439366232626237366165623761336131376132366561386232
           3834
 
+mysql_exporter_user: exporter
+mysql_exporter_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          36613263376135383233363366616630353865326238396134313537346532366462343838333639
+          3234633865313864616563336131363337353133643537650a393537326434663035323938393836
+          30643835613539656638393531353637613639343235323165636562333930353631326261643464
+          3063316433663063380a613662653831633766333365646266636336346339656130313834383830
+          6532
+
 startup: nicole.ptr
 
 dns_forwarders:
@@ -20,3 +29,18 @@ acl_address:
   - 192.168.43.0/24
   - 127.0.0.0/8
 
+
+prometheus_jobs:
+  - name: linux
+    target_port: 9100
+    target_group: all
+  - name: bind9
+    target_port: 9119
+    target_group: dns_servers
+  - name: nginx
+    target_port: 9113
+    target_group: web_servers
+  - name: mysql
+    target_port: 9104
+    target_group: db_servers
+  

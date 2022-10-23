@@ -1,5 +1,5 @@
-agressive-nicoleta-1 ansible_port=1622
-agressive-nicoleta-2 ansible_port=322 22
+agressive-nicoleta-1 ansible_port=15322
+agressive-nicoleta-2 ansible_port=31622
 
 [all:vars]
 ansible_host=193.40.156.67
@@ -8,12 +8,13 @@ ansible_ssh_user=ubuntu
 
 [web_servers]
 agressive-nicoleta-1
-agressive-nicoleta-2
 
 [db_servers]
+agressive-nicoleta-1
+agressive-nicoleta-2
+
+[dns_servers]
 agressive-nicoleta-2
 
 [prometheus]
 agressive-nicoleta-2
-
-##random

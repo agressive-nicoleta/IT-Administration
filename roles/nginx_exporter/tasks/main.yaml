@@ -1,0 +1,17 @@
+- name: Install nginx exporter
+  apt:
+    name: prometheus-nginx-exporter
+
+- name: Nginx exporter service
+  service:
+    name: prometheus-nginx-exporter
+    state: started
+    enabled: yes
+
+- name: exporter file service
+  copy:
+    src: exporter
+    dest: /etc/nginx/sites-enabled/exporter
+  notify:
+    - Restart nginx
+    - Restart nginx exporter
