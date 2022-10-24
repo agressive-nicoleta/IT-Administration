@@ -47,8 +47,15 @@
   tags: w
 
 - name: Prometheus
-  hosts: prometheus
+  hosts: prometheus_servers
   become: yes
   roles:
     - prometheus
   tags: p
+
+- name: Grafana
+  hosts: grafana_servers
+  become: yes
+  roles:
+    - grafana
+  tags: g

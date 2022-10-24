@@ -16,5 +16,8 @@ agressive-nicoleta-2
 [dns_servers]
 agressive-nicoleta-2
 
-[prometheus]
+[prometheus_servers]
 agressive-nicoleta-2
+
+[grafana_servers]
+agressive-nicoleta-1
