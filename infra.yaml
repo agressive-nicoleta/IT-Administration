@@ -59,3 +59,18 @@
   roles:
     - grafana
   tags: g
+
+- name: InfluxDB
+  hosts: influxdb_servers
+  become: yes
+  roles:
+    - influxdb
+    - influxdb_exporter
+  tags: flux
+
+- name: Pinger
+  hosts: pinger_servers
+  become: yes
+  roles:
+    - pinger
+  tags: ping

@@ -1,0 +1,34 @@
+- name: Install fping
+  apt:
+    name: fping
+
+- name: Create user pinger
+  user:
+    name: pinger
+
+- name: Copy pinger.conf
+  copy:
+    src: pinger.conf
+    dest: /etc/pinger/
+  notify: Restart pinger
+
+- name: Copy pinger.sh
+  copy:
+    src: pinger.sh
+    dest: /usr/local/bin/pinger
+    owner: pinger
+    mode: u+x
+
+- name: Copy pinger.service
+  copy:
+    src: pinger.service
+    dest: /etc/systemd/system/
+  notify: 
+    - Reload daemons
+    - Restart pinger
+
+- name: Pinger service
+  service:
+    name: pinger
+    state: started
+    enabled: yes

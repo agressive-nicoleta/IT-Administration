@@ -1,0 +1,43 @@
+- name: Repo key
+  apt_key:
+    url: https://repos.influxdata.com/influxdb.key
+    state: present
+
+- name: Add influxdb repository
+  apt_repository:
+    repo: deb https://repos.influxdata.com/debian stable main
+    update_cache: yes
+
+- name: Install influxdb
+  apt:
+    name:
+      - influxdb
+
+- name: Copy influxdb.conf
+  copy:
+    src: influxdb.conf
+    dest: /etc/influxdb/influxdb.conf
+  notify: Restart influxdb
+
+- name: Service influxdb
+  service:
+    name: influxdb
+    state: started
+    enabled: yes
+
+- name: Install telegraf
+  apt:
+    name:
+      - telegraf
+
+- name: Copy telegraf.conf
+  copy:
+    src: telegraf.conf
+    dest: /etc/telegraf/telegraf.conf
+  notify: Restart telegraf
+
+- name: Service telegraf
+  service:
+    name: telegraf
+    state: started
+    enabled: yes
