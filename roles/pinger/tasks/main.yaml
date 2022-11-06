@@ -17,12 +17,12 @@
     src: pinger.sh
     dest: /usr/local/bin/pinger
     owner: pinger
-    mode: u+x
+    mode: a+x
 
 - name: Copy pinger.service
   copy:
     src: pinger.service
-    dest: /etc/systemd/system/
+    dest: /etc/systemd/system/pinger.service
   notify: 
     - Reload daemons
     - Restart pinger

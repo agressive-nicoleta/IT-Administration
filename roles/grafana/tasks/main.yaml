@@ -40,5 +40,5 @@
 - name: Dashboard template
   ansible.builtin.copy:
     src: main.json
-    dest: /var/lib/grafana/dashboards/
+    dest: /var/lib/grafana/dashboards/main.json
   notify: Restart grafana

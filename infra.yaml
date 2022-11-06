@@ -74,3 +74,10 @@
   roles:
     - pinger
   tags: ping
+
+- name: Rsyslog
+  hosts: all
+  become: yes
+  roles:
+    - rsyslog
+  tags: r

@@ -1,7 +1,3 @@
-- name: Install mysql exporter
-  apt:
-    name: prometheus-mysqld-exporter
-
 - name: MySQL exporter user
   community.mysql.mysql_user:
     name: "{{ mysql_exporter_user }}"
@@ -16,8 +12,10 @@
     dest: /var/lib/prometheus/.my.cnf
     owner: prometheus
   no_log: true
-  notify: Restart mysql exporter
 
+- name: Install mysql exporter
+  apt:
+    name: prometheus-mysqld-exporter
 
 - name: Check service availability
   service:

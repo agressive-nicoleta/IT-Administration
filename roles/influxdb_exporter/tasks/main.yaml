@@ -1,1 +1,20 @@
-#
+- name: Copy influxdb-exporter binary
+  copy:
+    src: influx_stats_exporter_linux_amd64
+    dest: /usr/local/bin/prometheus-influxdb-stats-exporter
+    owner: prometheus
+    mode: a+x
+
+- name: Copy prometheus-influxdb-exporter
+  copy:
+    src: prometheus-influxdb-stats-exporter.service
+    dest: /etc/systemd/system/
+  notify: 
+    - Reload daemons
+    - Restart influxdb-exporter
+
+- name: Service prometheus-influxdb-exporter 
+  service:
+    name: prometheus-influxdb-stats-exporter.service
+    state: started
+    enabled: yes

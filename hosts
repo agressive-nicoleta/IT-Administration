@@ -1,5 +1,5 @@
-agressive-nicoleta-1 ansible_port=16922
-agressive-nicoleta-2 ansible_port=44822
+agressive-nicoleta-1 ansible_port=17322
+agressive-nicoleta-2 ansible_port=29222
 
 [all:vars]
 ansible_host=193.40.156.67
@@ -20,4 +20,10 @@ agressive-nicoleta-2
 agressive-nicoleta-2
 
 [grafana_servers]
+agressive-nicoleta-1
+
+[influxdb_servers]
+agressive-nicoleta-1
+
+[pinger_servers]
 agressive-nicoleta-1

@@ -24,4 +24,4 @@ while true; do
   curl -i -XPOST "${db_url}/write?db=$db_name" --data-binary "$result" 1>/dev/null 2>/dev/null
  sleep 1
 done
-Footer
+

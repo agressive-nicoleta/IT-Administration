@@ -1,6 +1,6 @@
 [Unit]
-Description=Pinger uses the command fping to retrieve metrics from fpinged websites
-Documentation=https://github.com/romankuchin/ica0002-2021/blob/main/08-logging/08-files/pinger.service
+Description=Pinger uses the command fping to retrieve metrics
+Documentation=https://github.com/romankuchin/ica0002-2022/blob/main/08-logging/08-files/pinger.service
 After=network-online.target
 
 [Service]
