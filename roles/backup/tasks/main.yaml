@@ -1,0 +1,14 @@
+- name: Add user backup and generate ssh keys for
+  user:
+    name: backup
+    home: /home/backup
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: /home/backup/.ssh/id_rsa
+    shell: /bin/bash
+
+- name: Add ssh key to knows_hosts file
+  template:
+    src: known_hosts.j2
+    dest: /home/backup/.ssh/known_hosts
+    owner: backup
