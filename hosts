@@ -6,8 +6,12 @@ ansible_host=193.40.156.67
 anisble_python_interpreter=python3
 ansible_ssh_user=ubuntu
 
+[web_app]
+agressive-nicoleta-1
+
 [web_servers]
 agressive-nicoleta-1
+agressive-nicoleta-2
 
 [db_servers]
 agressive-nicoleta-1

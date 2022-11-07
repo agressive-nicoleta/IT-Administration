@@ -33,15 +33,15 @@
   tags: m
 
 - name: Nginx
-  hosts: all
+  hosts: web_servers
   become: yes
   roles:
     - nginx
     - nginx_exporter
   tags: ng
 
-- name: Web server
-  hosts: web_servers
+- name: Agama
+  hosts: web_app
   become: yes
   roles:
     - agama
