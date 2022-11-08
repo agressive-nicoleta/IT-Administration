@@ -51,8 +51,12 @@ prometheus_jobs:
   - name: mysql
     target_port: 9104
     target_group: db_servers
+  - name: influx
+    target_port: 9424
+    target_group: influxdb_servers
+    
   
-backup_server_ip: '192.168.42.156'
+backup_server_ip: 192.168.42.132
 backup_server_ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 backup_user: backup
 backup_mysql_password: !vault |

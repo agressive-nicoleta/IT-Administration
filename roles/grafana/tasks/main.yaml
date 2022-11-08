@@ -37,10 +37,16 @@
     owner: grafana
     group: grafana
 
-- name: Dashboard template
+- name: Main dashboard template
   ansible.builtin.copy:
     src: main.json
     dest: /var/lib/grafana/dashboards/main.json
+  notify: Restart grafana
+
+- name: Syslog dashboard template
+  ansible.builtin.copy:
+    src: syslog.json
+    dest: /var/lib/grafana/dashboards/syslog.json
   notify: Restart grafana
 
 - name: Grafana service
