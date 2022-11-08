@@ -11,13 +11,6 @@
 - name: Install Grafana
   apt:
     name: grafana
-  notify: Grafana password
-
-- name: Grafana service
-  service:
-    name: grafana-server
-    state: started
-    enabled: yes
 
 - name: grafana.ini
   template:
@@ -37,8 +30,21 @@
     dest: /etc/grafana/provisioning/dashboards/sample.yaml
   notify: Restart grafana
 
+- name: Grafana dashboard directory
+  file:
+    path: /var/lib/grafana/dashboards
+    state: directory
+    owner: grafana
+    group: grafana
+
 - name: Dashboard template
   ansible.builtin.copy:
     src: main.json
     dest: /var/lib/grafana/dashboards/main.json
   notify: Restart grafana
+
+- name: Grafana service
+  service:
+    name: grafana-server
+    state: started
+    enabled: yes
