@@ -14,3 +14,13 @@
     owner: backup
     group: backup
     mode: '0644'
+
+- name: Create a directory for user backup
+  ansible.builtin.file:
+    path: /home/backup/restore
+    state: directory
+    owner: backup
+
+- name: Install Duplicity
+  apt:
+    name: duplicity

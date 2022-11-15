@@ -24,12 +24,13 @@
   roles:
     - resolver
 
-- name: Database and DNS server
+- name: MySQL
   hosts: db_servers
   become: yes
   roles:
     - mysql
     - mysql_exporter
+    - mysql_backup
   tags: m
 
 - name: Nginx
@@ -68,6 +69,7 @@
   roles:
     - influxdb
     - influxdb_exporter
+    - influxdb_backup
   tags: flux
 
 - name: Pinger
