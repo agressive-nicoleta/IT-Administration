@@ -11,8 +11,9 @@ Backups are created every day around midnight. Only 24h of data loss can be acce
 ### VERSIONING AND RETENTION
 
 Backups are held for a maximum of 30 days.
-Incremental backuping is used, which means that every day a different version is stored.
+Incremental backuping is used, which means that every day a different version is stored (from Monday to Saturday)
 Total versions: 30
+Full backups are created once a week, on Sunday.
 
 ### USABILITY CHECKS
 
