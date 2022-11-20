@@ -1,0 +1,5 @@
+{% if inventory_hostname in groups['web_app'] -%}
+50 23 * * * backup mysqldump agama > /home/backup/mysql/agama.sql
+00 00 * * 0  backup  duplicity --no-encryption full /home/backup/mysql/ rsync://{{user}}@backup.{{startup}}//home/{{user}}/mysql/
+00 00 * * 1-6  backup  duplicity --no-encryption incremental /home/backup/mysql/ rsync://{{user}}@backup.{{startup}}//home/{{user}}/mysql/
+{% endif -%}
