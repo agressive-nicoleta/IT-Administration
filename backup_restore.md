@@ -64,7 +64,7 @@ Example: ssh -p 6922 ubuntu@193.40.156.67
 
 4.  Download the backup to the managed host
 
-    duplicity --no-encryption restore rsync://agressive-nicoleta@backup.nicole.ptr//home/agressive-nicoleta/influxdb /home/backup/restore/influxdb
+        duplicity --no-encryption restore rsync://agressive-nicoleta@backup.nicole.ptr//home/agressive-nicoleta/influxdb /home/backup/restore/influxdb
 
 5.  Put restored dump into the telegraf database
 
