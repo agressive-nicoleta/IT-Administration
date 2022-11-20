@@ -74,8 +74,4 @@ Example: ssh -p 6922 ubuntu@193.40.156.67
 
         ansible-playbook infra.yaml
 
-    **Or** restart manually on the host machine by running:
-
-        sudo systemctl start influxdb
-
 7.  To check if data was restored, access Syslog dashboard in Grafana

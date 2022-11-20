@@ -5,8 +5,8 @@
       - python3-pymysql
 
 - name: Restart service is needed
-  copy: 
-    src: override
+  template: 
+    src: override.j2
     dest: /etc/mysql/mysql.conf.d/override.cnf
     mode: 0644
   notify: Restart MySQL
