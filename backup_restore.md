@@ -45,6 +45,4 @@
     mysql agama < /home/backup/restore/mysql/agama.sql
     ```
 
-    6. Open agama app and check if data is restored
-
-<add a few words here how the result of backup restore can be checked>
+Open agama app and check if data is restored
