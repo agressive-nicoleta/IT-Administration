@@ -1,4 +1,4 @@
-# The process of MySQL backup restore
+# The process of backup restoration: MySQL and InfluxDB
 
 ### Install and configure Ansible infrastructure on the local machine:
 
