@@ -2,18 +2,15 @@
 
 ### Install and configure infrastructure with Ansible on the local machine:
 
-    ```
     ansible-playbook infra.yaml
-    ```
 
 ## Restore MySQL data from the backup:
 
 ### Log into agama host machine (agressive-nicoleta-1)
 
-    ```
     ssh -p <port_number> ubuntu@<ip_address>
-    ```
-    Example: ssh -p 6922  ubuntu@193.40.156.67
+
+Example: ssh -p 6922 ubuntu@193.40.156.67
 
 ### Execute following commands on this machine to restore mysql data
 
