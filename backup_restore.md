@@ -17,32 +17,22 @@
 
 ### Execute following commands on this machine to restore mysql data
 
-    1. As root clean directory /home/backup/restore
-    ```
-    sudo su
-    rm /home/backup/restore/*
-    exit
-    ```
+1. As root clean directory /home/backup/restore
+   sudo su
+   rm /home/backup/restore/\*
+   exit
 
-    2. Login in as backup user
-    ```
-    sudo su backup
-    ```
+2. Login in as backup user
+   sudo su backup
 
-    3. Download the backup to the managed host
-    ```
-    duplicity --no-encryption restore rsync://agressive-nicoleta@backup.nicole.ptr//home/agressive-nicoleta/mysql /home/backup/restore/mysql
-    ```
+3. Download the backup to the managed host
+   duplicity --no-encryption restore rsync://agressive-nicoleta@backup.nicole.ptr//home/agressive-nicoleta/mysql /home/backup/restore/mysql
 
-    4. Exit backup user and login as root user
-    ```
-    exit
-    sudo su
-    ```
+4. Exit backup user and login as root user
+   exit
+   sudo su
 
-    5. Restore the backup for the mysql service
-    ```
-    mysql agama < /home/backup/restore/mysql/agama.sql
-    ```
+5. Restore the backup for the mysql service
+   mysql agama < /home/backup/restore/mysql/agama.sql
 
 Open agama app and check if data is restored
