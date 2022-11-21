@@ -4,7 +4,7 @@
       - mysql-server
       - python3-pymysql
 
-- name: Restart service is needed
+- name: Server configuration
   template: 
     src: override.j2
     dest: /etc/mysql/mysql.conf.d/override.cnf
@@ -17,16 +17,37 @@
     state: started
     enabled: yes
 
-- name: Create MySQL database
+- name: Create MySQL database for Agama
   community.mysql.mysql_db:
     name: "{{ mysql_database }}"
     state: present
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica
 
-- name: MySQL users
+- name: MySQL user for Agama
   community.mysql.mysql_user:
     name: "{{ mysql_user }}"
     password: "{{ mysql_password }}"
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Replication user
+  community.mysql.mysql_user:
+    name: "{{ replication_user }}"
+    password: "{{ replication_mysql_password }}"
+    host: "%"
+    priv: "*.*:REPLICATION SLAVE"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: MySQL read only mode for replica server
+  community.mysql.mysql_variables:
+    variable: read_only
+    value: "{{ 'OFF' if inventory_hostname == mysql_host else 'ON' }}"
+    mode: persist
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica

@@ -49,6 +49,18 @@
     dest: /var/lib/grafana/dashboards/syslog.json
   notify: Restart grafana
 
+- name: Main dashboard template
+  ansible.builtin.copy:
+    src: main.json
+    dest: /var/lib/grafana/dashboards/main.json
+  notify: Restart grafana
+
+- name: Syslog dashboard template
+  ansible.builtin.copy:
+    src: mysql.json
+    dest: /var/lib/grafana/dashboards/mysql.json
+  notify: Restart grafana
+
 - name: Grafana service
   service:
     name: grafana-server

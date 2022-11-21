@@ -1,6 +1,7 @@
 user: agressive-nicoleta
 
-#mysql_host: 192.168.43.67
+mysql_host: agressive-nicoleta-2
+mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host) }}"
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -70,3 +71,12 @@ backup_mysql_password: !vault |
           6533
 
 node_id: "{{ (ansible_port / 100) | int }}"
+
+replication_user: replication
+replication_mysql_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          32366231326631323537666265393435613663343932626132363931663639346137333130343662
+          6631386437316562316164643639313733646133636464390a353636666332626365623138373965
+          62386636366439373862333561386162386130393931343064373165613032363131353266626662
+          6133303266343133340a613435653535323033393966656266383863323732393765363262326436
+          3164
