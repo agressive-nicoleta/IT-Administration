@@ -1,0 +1,20 @@
+- name: Grafana directory
+  ansible.builtin.file:
+    name: /opt/grafana
+    state: directory
+
+- name: Grafana configuration
+  ansible.builtin.template:
+    src: grafana.ini.j2
+    dest: /opt/grafana/grafana.ini
+  no_log: true
+
+- name: Grafana docker container
+  community.docker.docker_container:
+    container_default_behavior: no_defaults
+    name: grafana
+    image: grafana/grafana
+    published_ports: "{{ grafana_port }}:3000"
+    volumes: /opt/grafana:/etc/grafana
+    #state: started
+    #estart_policy: always

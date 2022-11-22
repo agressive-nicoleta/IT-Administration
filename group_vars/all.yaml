@@ -1,5 +1,7 @@
 user: agressive-nicoleta
 
+grafana_port: 3001
+
 mysql_host: agressive-nicoleta-2
 mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host) }}"
 mysql_database: agama

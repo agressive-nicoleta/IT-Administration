@@ -6,7 +6,7 @@
 
 ## Restore MySQL data
 
-### Log into agama host machine (agressive-nicoleta-1)
+### Log into mysql host machine (agressive-nicoleta-2)
 
     ssh -p <port_number> ubuntu@<ip_address>
 
@@ -16,7 +16,7 @@ Example: ssh -p 6922 ubuntu@193.40.156.67
 
 1.  Login in as backup user
 
-        sudo su backup
+        sudo su - backup
 
 2.  Download the backup to the managed host
 
@@ -54,11 +54,11 @@ Example: ssh -p 6922 ubuntu@193.40.156.67
 
 3.  Login as backup user
 
-        sudo su backup
+        sudo su - backup
 
 4.  Download the backup to the managed host
 
-        duplicity --no-encryption restore rsync://agressive-nicoleta@backup.nicole.ptr//home/agressive-nicoleta/influxdb /home/backup/restore/influxdb
+        duplicity --no-encryption restore rsync://agressive-nicoleta@backup.nicole.ptr//home/agressive-nicoleta/influxdb/ /home/backup/restore/influxdb/
 
 5.  Put restored dump into the telegraf database
 

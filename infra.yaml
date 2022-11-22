@@ -33,20 +33,14 @@
     - mysql_backup
   tags: m
 
-- name: Nginx
-  hosts: web_servers
-  become: yes
-  roles:
-    - nginx
-    - nginx_exporter
-  tags: ng
-
 - name: Agama
   hosts: web_app
   become: yes
   roles:
     - agama
     - uwsgi
+    - nginx
+    - nginx_exporter
   tags: w
 
 - name: Prometheus
@@ -54,13 +48,24 @@
   become: yes
   roles:
     - prometheus
+    - nginx
+    - nginx_exporter
   tags: p
+
+- name: Docker
+  hosts: web_servers
+  become: yes
+  roles:
+    - docker
+  tags: d
 
 - name: Grafana
   hosts: grafana_servers
   become: yes
   roles:
     - grafana
+    - nginx
+    - nginx_exporter
   tags: g
 
 - name: InfluxDB
