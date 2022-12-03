@@ -1,5 +1,5 @@
-agressive-nicoleta-1 ansible_port=31222
-agressive-nicoleta-2 ansible_port=43822
+agressive-nicoleta-1 ansible_port=2022
+agressive-nicoleta-2 ansible_port=16322
 
 [all:vars]
 ansible_host=193.40.156.67

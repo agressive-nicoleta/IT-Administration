@@ -52,7 +52,7 @@ prometheus_jobs:
     target_group: dns_servers
   - name: nginx
     target_port: 9113
-    target_group: web_servers
+    target_group: all
   - name: mysql
     target_port: 9104
     target_group: db_servers
