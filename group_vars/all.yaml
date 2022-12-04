@@ -5,7 +5,7 @@ prometheus_port: 9090
 
 agama_ports:
   agama-1: 8001
-  #agama-2: 8010
+  agama-2: 8010
 
 mysql_host: agressive-nicoleta-2
 mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host) }}"
@@ -64,7 +64,14 @@ prometheus_jobs:
   - name: influx
     target_port: 9424
     target_group: influxdb_servers
-    
+  - name: haproxy
+    target_port: 9101
+    target_group: haproxy_servers
+  - name: keepalived
+    target_port: 9165
+    target_group: haproxy_servers
+
+
   
 backup_server_ip: 192.168.42.132
 backup_server_ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90

@@ -1,0 +1,27 @@
+vrrp_script check_haproxy {                 
+    script "/usr/local/bin/check_haproxy.sh" 
+    weight 20                                          
+}
+
+vrrp_instance agama {       
+
+    interface ens3
+    virtual_router_id 1
+    {% if inventory_hostname == "agressive-nicoleta-1"%}
+    priority 100
+    {% else %}
+    priority 99
+    {% endif %}
+    advert_int 1                            
+    virtual_ipaddress {                     
+        192.168.{{ hostvars['agressive-nicoleta-1']['ansible_default_ipv4']['address'].split('.')[-2] | int +58}}.{{ hostvars['agressive-nicoleta-1']['ansible_default_ipv4']['address'].split('.')[-1] }}/24                   
+    }
+    unicast_peer {                          
+        {% for vm in (groups['haproxy_servers']|reject('equalto', inventory_hostname))%}
+        {{ hostvars[vm]['ansible_default_ipv4']['address'] }}
+        {% endfor %}
+    }
+    track_script {
+        check_haproxy
+    }
+}

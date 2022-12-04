@@ -5,11 +5,11 @@
 
 - name: Install the agama application
   get_url:
-    url: "{{item.url}}"
-    dest: "/opt/agama{{ item.dest }}"
+    url: "https://raw.githubusercontent.com/hudolejev/agama/master/{{ item }}"
+    dest: /opt/agama
   loop:
-    - { url: 'https://raw.githubusercontent.com/hudolejev/agama/master/agama.py', dest: ''}
-    - { url: 'https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile', dest: '/Dockerfile'}
+    - agama.py
+    - Dockerfile
 
 - name: Build Agama image
   community.docker.docker_image:
@@ -19,12 +19,11 @@
       path: /opt/agama
 
 - name: Start Agama container
-  community.docker.docker_container:                                            
-    container_default_behavior: no_defaults                                     
+  community.docker.docker_container:                                    
     name: "{{ item.key }}"
     image: agama
     published_ports: "{{ item.value }}:8000" 
-    env: AGAMA_DATABASE_URI=mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{ hostvars['agressive-nicoleta-2']['ansible_default_ipv4']['address'] }}/{{mysql_database}}
+    env: AGAMA_DATABASE_URI=mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{ mysql_host }}/{{mysql_database}}
     state: started
     restart_policy: always
   loop: "{{ agama_ports | dict2items }}"

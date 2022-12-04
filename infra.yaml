@@ -8,7 +8,7 @@
     - node_exporter
     - rsyslog
     - backup
-  tags: i
+  tags: always
 
 - name: DNS servers
   hosts: dns_servers
@@ -33,15 +33,6 @@
     - mysql_backup
   tags: m
 
-- name: Agama
-  hosts: web_app
-  become: yes
-  roles:
-    - agama
-    - nginx
-    - nginx_exporter
-  tags: w
-
 - name: Prometheus
   hosts: prometheus_servers
   become: yes
@@ -58,6 +49,15 @@
     - docker
   tags: d
 
+- name: Agama
+  hosts: web_app
+  become: yes
+  roles:
+    - agama
+    - nginx
+    - nginx_exporter
+  tags: w
+
 - name: Grafana
   hosts: grafana_servers
   become: yes
@@ -66,6 +66,16 @@
     - nginx
     - nginx_exporter
   tags: g
+
+- name: Haproxy and keepalived
+  hosts: haproxy_servers
+  become: yes
+  roles:
+    - haproxy
+    - haproxy_exporter
+    - keepalived
+    - keepalived_exporter
+  tags: h
 
 - name: InfluxDB
   hosts: influxdb_servers

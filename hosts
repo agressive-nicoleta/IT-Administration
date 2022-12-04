@@ -8,6 +8,7 @@ ansible_ssh_user=ubuntu
 
 [web_app]
 agressive-nicoleta-1
+agressive-nicoleta-2
 
 [db_servers]
 agressive-nicoleta-1
@@ -30,3 +31,8 @@ agressive-nicoleta-1
 
 [docker_servers]
 agressive-nicoleta-1
+agressive-nicoleta-2
+
+[haproxy_servers]
+agressive-nicoleta-1
+agressive-nicoleta-2

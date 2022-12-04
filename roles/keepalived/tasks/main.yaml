@@ -1,0 +1,22 @@
+- name: Keepalived installation
+  apt:
+    name: keepalived
+
+- name: Keepalived configuration
+  template:
+    src: keepalived.conf.j2
+    dest: /etc/keepalived/keepalived.conf
+  notify: Restart keepalived
+
+- name: Keepalived script
+  template:
+    src: check_haproxy.sh.j2
+    dest: /usr/local/bin/check_haproxy.sh
+    mode: '755'
+
+- name: Keepalived service
+  service:
+    name: "{{ item }}"
+    state: started
+  loop:
+    - keepalived
