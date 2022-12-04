@@ -38,7 +38,6 @@
   become: yes
   roles:
     - agama
-    - uwsgi
     - nginx
     - nginx_exporter
   tags: w
@@ -53,7 +52,7 @@
   tags: p
 
 - name: Docker
-  hosts: web_servers
+  hosts: docker_servers
   become: yes
   roles:
     - docker

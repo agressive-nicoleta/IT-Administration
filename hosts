@@ -1,5 +1,5 @@
-agressive-nicoleta-1 ansible_port=2022
-agressive-nicoleta-2 ansible_port=16322
+agressive-nicoleta-1 ansible_port=12522
+agressive-nicoleta-2 ansible_port=1322
 
 [all:vars]
 ansible_host=193.40.156.67
@@ -26,4 +26,7 @@ agressive-nicoleta-1
 agressive-nicoleta-1
 
 [pinger_servers]
+agressive-nicoleta-1
+
+[docker_servers]
 agressive-nicoleta-1
