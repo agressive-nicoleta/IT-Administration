@@ -1,0 +1,27 @@
+- name: Set A records
+  nsupdate:
+    key_name: "nsupdate.key"
+    key_algorithm: "hmac-sha256"
+    key_secret: "{{ nsupdate_key }}"
+    server: "localhost"
+    zone: "{{ startup }}"
+    type: "A"
+    record: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ a_records | dict2items }}"
+  # run_once: true
+  notify: Restart bind9
+
+- name: Set CNAME records
+  nsupdate:
+    key_name: "nsupdate.key"
+    key_algorithm: "hmac-sha256"
+    key_secret: "{{ nsupdate_key }}"
+    server: "localhost"
+    zone: "{{ startup }}"
+    type: "CNAME"
+    record: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ cname_records | dict2items }}"
+  # run_once: true
+  notify: Restart bind9

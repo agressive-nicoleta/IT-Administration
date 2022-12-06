@@ -1,5 +1,5 @@
-agressive-nicoleta-1 ansible_port=12522
-agressive-nicoleta-2 ansible_port=1322
+agressive-nicoleta-1 ansible_port=35422
+agressive-nicoleta-2 ansible_port=45622
 
 [all:vars]
 ansible_host=193.40.156.67
@@ -14,8 +14,15 @@ agressive-nicoleta-2
 agressive-nicoleta-1
 agressive-nicoleta-2
 
-[dns_servers]
+[dns_masters]
+agressive-nicoleta-1
+
+[dns_slaves]
 agressive-nicoleta-2
+
+[dns_servers:children]
+dns_masters
+dns_slaves
 
 [prometheus_servers]
 agressive-nicoleta-2

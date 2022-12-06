@@ -1,14 +1,21 @@
 ---
-- name: Init
+- name: Setup
   hosts: all
   gather_facts: yes
+  become: yes
+  tasks:
+    - setup:
+  tags: always
+
+- name: Init
+  hosts: all
   become: yes
   roles:
     - init
     - node_exporter
     - rsyslog
     - backup
-  tags: always
+  tags: i
 
 - name: DNS servers
   hosts: dns_servers
@@ -17,6 +24,13 @@
     - bind
     - bind_exporter
   tags: b
+
+- name: DNs records
+  hosts: dns_masters
+  become: yes
+  roles:
+    - dns_records
+  tags: r
 
 - name: Resolv.conf file
   hosts: all

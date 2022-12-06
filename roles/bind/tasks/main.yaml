@@ -1,6 +1,8 @@
 - name: Install Bind package
   apt:
-    name: bind9
+    name: 
+      - bind9
+      - python3-dnspython
 
 - name: Check service bind9
   service:
@@ -21,6 +23,15 @@
 
 - name: Create db of the startup
   template:
-    src: db.nicole.ptr.j2
-    dest: /var/lib/bind/db.nicole.ptr
+    src: db.nicole.ta.j2
+    dest: /var/cache/bind/db.{{startup}}
   notify: Reload db
+  when: inventory_hostname in groups['dns_masters']
+
+- name: Create db of the reverse
+  template:
+    src: db.reverse.j2
+    dest: /var/cache/bind/db.reverse
+  notify: Reload db
+  when: inventory_hostname in groups['dns_masters']
+
