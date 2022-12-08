@@ -33,7 +33,7 @@ logging {
 };
 
 
-{% if inventory_hostname not in groups['dns_masters'] %}
+{% if inventory_hostname in groups['dns_servers'] %}
 {% for master in groups['dns_masters'] %}
 server {{ hostvars[master]['ansible_default_ipv4']['address'] }} {
 {% endfor %}

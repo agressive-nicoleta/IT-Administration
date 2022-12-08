@@ -24,7 +24,8 @@
 - name: Create db of the startup
   template:
     src: db.nicole.ta.j2
-    dest: /var/cache/bind/db.{{startup}}
+    dest: /var/cache/bind/db.nicole.ta
+    force: no
   notify: Reload db
   when: inventory_hostname in groups['dns_masters']
 

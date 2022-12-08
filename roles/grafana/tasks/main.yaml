@@ -26,6 +26,7 @@
   loop:
     - { src: 'dashboard.yaml', dest: 'dashboards' }
     - { src: 'datasource.yaml', dest: 'datasources' }
+  notify: Restart grafana container
 
 - name: Grafana dashboards
   ansible.builtin.copy:

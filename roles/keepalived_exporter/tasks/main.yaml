@@ -1,9 +1,10 @@
-- name: Copy keepalived-exporter binary
-  ansible.builtin.copy:
-    src: keepalived-exporter
-    dest: /usr/local/bin/prometheus-keepalived-exporter
-    owner: prometheus
-    mode: u+x
+- name: Upload keepalived exporter file
+  ansible.builtin.unarchive:
+    src: http://backup/keepalived-exporter-1.2.0.linux-amd64.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755
+  notify: Restart keepalived-exporter
 
 - name: Copy keepalived-exporter.service
   ansible.builtin.copy:
