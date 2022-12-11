@@ -29,8 +29,12 @@ listen {{ startup }}
     bind *:88
     stats enable
     stats uri /stats
-    server docker1 agressive-nicoleta-1:{{agama_ports["agama-1"]}} check
-    server docker2 agressive-nicoleta-1:{{agama_ports["agama-2"]}} check
-    server docker3 agressive-nicoleta-2:{{agama_ports["agama-1"]}} check
-    server docker4 agressive-nicoleta-2:{{agama_ports["agama-2"]}} check
+	{% set counter = namespace(value = 1) %}
+    {% for vm in groups['web_app'] -%}
+    {% for key,value in agama_ports.items() -%}
+    server docker{{counter.value}} {{ vm }}:{{value}} check
+	{% set counter.value = counter.value + 1 %}
+    {% endfor %}
+    {%- endfor %}
+
 

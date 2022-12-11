@@ -1,7 +1,7 @@
 acl lan { {% for address in acl_address %} {{address}}; {% endfor %} };
 
 options {
-	directory "/var/lib/bind";
+	directory "/var/cache/bind";
 
 	forwarders {
 	{% for dns in dns_forwarders %}

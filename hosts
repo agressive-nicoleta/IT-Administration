@@ -1,5 +1,6 @@
-agressive-nicoleta-1 ansible_port=29322
-agressive-nicoleta-2 ansible_port=33922
+agressive-nicoleta-1 ansible_port=39222
+agressive-nicoleta-2 ansible_port=33722
+agressive-nicoleta-3 ansible_port=27322
 
 [all:vars]
 ansible_host=193.40.156.67
@@ -10,14 +11,21 @@ ansible_ssh_user=ubuntu
 agressive-nicoleta-1
 agressive-nicoleta-2
 
-[db_servers]
-agressive-nicoleta-1
+[db_servers:children]
+db_masters
+db_slaves
+
+[db_masters]
 agressive-nicoleta-2
 
-[dns_masters]
+[db_slaves]
 agressive-nicoleta-1
 
+[dns_masters]
+agressive-nicoleta-3
+
 [dns_slaves]
+agressive-nicoleta-1
 agressive-nicoleta-2
 
 [dns_servers:children]
@@ -25,20 +33,21 @@ dns_masters
 dns_slaves
 
 [prometheus_servers]
-agressive-nicoleta-2
+agressive-nicoleta-3
 
 [grafana_servers]
-agressive-nicoleta-1
+agressive-nicoleta-3
 
 [influxdb_servers]
-agressive-nicoleta-1
+agressive-nicoleta-3
 
 [pinger_servers]
-agressive-nicoleta-1
+agressive-nicoleta-3
 
 [docker_servers]
 agressive-nicoleta-1
 agressive-nicoleta-2
+agressive-nicoleta-3
 
 [haproxy_servers]
 agressive-nicoleta-1
