@@ -107,6 +107,14 @@
         }
       ],
       "title": "MySQL Status",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "valueLabel": "instance"
+          }
+        }
+      ],
       "type": "stat"
     },
     {
@@ -171,6 +179,14 @@
         }
       ],
       "title": "MySQL server IDs",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "valueLabel": "instance"
+          }
+        }
+      ],
       "type": "stat"
     },
     {
@@ -254,6 +270,14 @@
         }
       ],
       "title": "Read-only status",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "valueLabel": "instance"
+          }
+        }
+      ],
       "type": "stat"
     },
     {
@@ -591,6 +615,6 @@
   "timezone": "",
   "title": "MySQL",
   "uid": "a3yN1TdVz",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }

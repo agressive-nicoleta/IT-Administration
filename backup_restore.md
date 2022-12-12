@@ -6,7 +6,7 @@
 
 ## Restore MySQL data
 
-### Log into mysql backup machine (agressive-nicoleta-1) and execute following commands
+### Log into mysql replica machine (agressive-nicoleta-1) and execute following commands
 
 Delete agama database from backup vm
 
@@ -33,9 +33,9 @@ Delete agama database from backup vm
 
         mysql agama < /home/backup/restore/mysql/agama.sql
 
-5.  Run Ansible playbook on the local machine:
+5.  Run Ansible playbook on the local machine to reset mysql services:
 
-        ansible-playbook infra.yaml
+        ansible-playbook infra.yaml -tm
 
 6.  Open agama app and look if data is restored
 

@@ -39,9 +39,10 @@
 
 - name: Grafana docker container
   community.docker.docker_container:
-    container_default_behavior: no_defaults
     name: grafana
     image: grafana/grafana
     published_ports: "{{ grafana_port }}:3000"
+    exposed_ports: "{{ grafana_port }}"
     volumes: /opt/grafana:/etc/grafana
     state: started
+    restart_policy: always
