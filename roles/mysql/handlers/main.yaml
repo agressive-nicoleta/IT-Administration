@@ -19,6 +19,7 @@
     primary_user: "{{ replication_user }}"
     primary_password: "{{ replication_mysql_password }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  no_log: true
   loop:
     - stopreplica
     - changeprimary

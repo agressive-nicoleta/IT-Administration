@@ -10,6 +10,7 @@
     value: "{{ item.value }}"
   loop: "{{ a_records | dict2items }}"
   run_once: true
+  no_log: true
   notify: Restart bind9
 
 - name: Set CNAME records
@@ -24,4 +25,5 @@
     value: "{{ item.value }}"
   loop: "{{ cname_records | dict2items }}"
   run_once: true
+  no_log: true
   notify: Restart bind9
