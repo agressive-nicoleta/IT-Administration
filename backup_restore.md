@@ -35,7 +35,7 @@ Example: ssh -p 6922 ubuntu@193.40.156.67
 
 ## Restore InfluxDB data
 
-### ### Log into the host machine with influxdb (agressive-nicoleta-1)
+### ### Log into the host machine with influxdb (agressive-nicoleta-3)
 
     ssh -p <port_number> ubuntu@<ip_address>
 
