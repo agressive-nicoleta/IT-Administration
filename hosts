@@ -1,5 +1,5 @@
-agressive-nicoleta-1 ansible_port=41922
-agressive-nicoleta-2 ansible_port=36722
+agressive-nicoleta-1 ansible_port=45022
+agressive-nicoleta-2 ansible_port=32122
 agressive-nicoleta-3 ansible_port=30322
 
 [all:vars]
