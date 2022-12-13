@@ -14,5 +14,6 @@
   service: 
     name: uwsgi
     state: started
+    enabled: yes
 
 

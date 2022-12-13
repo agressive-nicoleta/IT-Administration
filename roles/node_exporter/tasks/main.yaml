@@ -6,3 +6,4 @@
   service:
     name: prometheus-node-exporter
     state: started
+    enabled: yes

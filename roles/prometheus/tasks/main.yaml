@@ -6,6 +6,7 @@
   service:
     name: prometheus
     state: started
+    enabled: yes
 
 - name: Change prometheus configuration
   template:

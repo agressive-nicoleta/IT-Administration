@@ -8,6 +8,7 @@
   service:
     name: bind9
     state: started
+    enabled: yes
 
 - name: Overwrite named.conf.options file
   template:

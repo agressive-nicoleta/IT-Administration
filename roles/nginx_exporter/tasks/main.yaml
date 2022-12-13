@@ -7,11 +7,3 @@
     name: prometheus-nginx-exporter
     state: started
     enabled: yes
-
-- name: exporter file service
-  copy:
-    src: exporter
-    dest: /etc/nginx/sites-enabled/exporter
-  notify:
-    - Restart nginx
-    - Restart nginx exporter
