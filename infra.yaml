@@ -70,7 +70,7 @@
     - agama
     - nginx
     - nginx_exporter
-  tags: w
+  tags: a
 
 - name: Grafana
   hosts: grafana_servers

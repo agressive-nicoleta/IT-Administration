@@ -6,14 +6,6 @@
 
 ## Restore MySQL data
 
-### Log into mysql replica machine (agressive-nicoleta-1) and execute following commands
-
-Delete agama database from backup vm
-
-        sudo su
-        mysql
-        drop database agama;
-
 ### Log into mysql host machine (agressive-nicoleta-2) and execute following commands to restore mysql data
 
 1.  Login in as backup user
@@ -33,15 +25,11 @@ Delete agama database from backup vm
 
         mysql agama < /home/backup/restore/mysql/agama.sql
 
-5.  Run Ansible playbook on the local machine to reset mysql services:
-
-        ansible-playbook infra.yaml -tm
-
-6.  Open agama app and look if data is restored
+5.  Open agama app and look if data is restored
 
 ## Restore InfluxDB data
 
-### ### Log into the host machine with influxdb (agressive-nicoleta-3)
+### Log into the host machine with influxdb (agressive-nicoleta-3)
 
     ssh -p <port_number> ubuntu@<ip_address>
 
